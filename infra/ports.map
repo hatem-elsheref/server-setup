@@ -1,0 +1,13 @@
+# Port Allocation Map
+# Format: project_name:port:type
+# Type can be: node, php-fpm, or other
+# Reserved ports:
+# 80   - Nginx HTTP
+# 443  - Nginx HTTPS
+# 3306 - MySQL
+# 5432 - PostgreSQL
+# 27017 - MongoDB
+# 6379 - Redis
+# 5672 - RabbitMQ
+# 9000-9099 - PHP-FPM pools (reserved)
+# 8000-8999 - Node.js apps (available)

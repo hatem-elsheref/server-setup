@@ -1,0 +1,4 @@
+# User Mapping
+# Format: project_name:linux_user:uid
+# Tracks which Linux user owns which project
+# UID will be auto-assigned starting from 10000

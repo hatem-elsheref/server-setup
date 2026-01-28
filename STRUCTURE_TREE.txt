@@ -1,0 +1,54 @@
+HPanel Infrastructure Structure
+================================
+
+infra/
+├── bin/                          # Executable scripts (CLI tools)
+│   └── .gitkeep
+│
+├── templates/                    # Configuration templates
+│   ├── nginx/                    # Nginx config templates
+│   ├── supervisor/               # Supervisor config templates
+│   ├── php/                      # PHP-FPM pool templates
+│   ├── env/                      # Environment file templates
+│   └── README.md
+│
+├── services/                     # Shared services configuration
+│   ├── nginx/
+│   │   ├── sites-available/      # All Nginx configs (inactive)
+│   │   └── sites-enabled/        # Active Nginx configs (symlinks)
+│   ├── mysql/                    # MySQL configuration
+│   ├── php/
+│   │   ├── php7.4/               # PHP 7.4 configs
+│   │   ├── php8.0/               # PHP 8.0 configs
+│   │   ├── php8.1/               # PHP 8.1 configs
+│   │   ├── php8.2/               # PHP 8.2 configs
+│   │   └── php8.3/               # PHP 8.3 configs
+│   ├── redis/                    # Redis configuration
+│   ├── postgresql/               # PostgreSQL configuration
+│   ├── mongodb/                  # MongoDB configuration
+│   ├── rabbitmq/                 # RabbitMQ configuration
+│   ├── minio/                    # MinIO configuration
+│   ├── postfix/                  # Postfix (mail) configuration
+│   ├── dovecot/                  # Dovecot (IMAP) configuration
+│   ├── vsftpd/                   # FTP server configuration
+│   └── README.md
+│
+├── projects/                     # All your applications
+│   └── .gitkeep
+│   # Each project will have:
+│   #   project1/
+│   #     ├── current/            # Symlink to latest release
+│   #     ├── releases/           # All deployment versions
+│   #     └── shared/             # Persistent files (.env, uploads)
+│
+├── logs/                         # Centralized logging
+│   ├── nginx/                    # Nginx logs
+│   ├── php/                      # PHP-FPM logs
+│   ├── projects/                 # Project-specific logs
+│   └── README.md
+│
+├── ports.map                     # Port allocation tracking
+├── users.map                     # User ownership tracking
+├── config.env                    # System-wide configuration
+└── README.md
+
