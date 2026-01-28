@@ -364,36 +364,36 @@ install_redis() {
 # RabbitMQ Installation
 ###############################################################################
 
-install_rabbitmq() {
-    log_info "=== Installing RabbitMQ ==="
-    
-    if check_installed rabbitmq-server; then
-        log_info "RabbitMQ is already installed"
-    else
-        log_info "Installing RabbitMQ..."
-        
-        # Add Erlang repository (RabbitMQ dependency)
-        if [ ! -f /etc/apt/sources.list.d/rabbitmq.list ]; then
-            curl -fsSL https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key | gpg --dearmor > /usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg
-            echo "deb [signed-by=/usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg] https://ppa1.novemberain.com/rabbitmq/rabbitmq-erlang/ubuntu jammy main" | tee /etc/apt/sources.list.d/rabbitmq-erlang.list
-            echo "deb [signed-by=/usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg] https://ppa1.novemberain.com/rabbitmq/rabbitmq/ubuntu jammy main" | tee /etc/apt/sources.list.d/rabbitmq.list
-            apt-get update -qq
-        fi
-        
-        apt-get install -y rabbitmq-server > /dev/null 2>&1
-        
-        # Enable management plugin
-        rabbitmq-plugins enable rabbitmq_management > /dev/null 2>&1
-        
-        # Create config directory
-        mkdir -p "$INFRA_DIR/services/rabbitmq"
-        
-        log_success "RabbitMQ installed"
-    fi
-    
-    ensure_service_running rabbitmq-server
-    log_success "RabbitMQ ready"
-}
+#install_rabbitmq() {
+#    log_info "=== Installing RabbitMQ ==="
+#
+#    if check_installed rabbitmq-server; then
+#        log_info "RabbitMQ is already installed"
+#    else
+#        log_info "Installing RabbitMQ..."
+#
+#        # Add Erlang repository (RabbitMQ dependency)
+#        if [ ! -f /etc/apt/sources.list.d/rabbitmq.list ]; then
+#            curl -fsSL https://github.com/rabbitmq/signing-keys/releases/download/3.0/cloudsmith.rabbitmq-erlang.E495BB49CC4BBE5B.key | gpg --dearmor > /usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg
+#            echo "deb [signed-by=/usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg] https://ppa1.novemberain.com/rabbitmq/rabbitmq-erlang/ubuntu jammy main" | tee /etc/apt/sources.list.d/rabbitmq-erlang.list
+#            echo "deb [signed-by=/usr/share/keyrings/rabbitmq.E495BB49CC4BBE5B.gpg] https://ppa1.novemberain.com/rabbitmq/rabbitmq/ubuntu jammy main" | tee /etc/apt/sources.list.d/rabbitmq.list
+#            apt-get update -qq
+#        fi
+#
+#        apt-get install -y rabbitmq-server > /dev/null 2>&1
+#
+#        # Enable management plugin
+#        rabbitmq-plugins enable rabbitmq_management > /dev/null 2>&1
+#
+#        # Create config directory
+#        mkdir -p "$INFRA_DIR/services/rabbitmq"
+#
+#        log_success "RabbitMQ installed"
+#    fi
+#
+#    ensure_service_running rabbitmq-server
+#    log_success "RabbitMQ ready"
+#}
 
 ###############################################################################
 # MinIO Installation
@@ -608,7 +608,7 @@ main() {
     install_postgresql
     install_mongodb
     install_redis
-    install_rabbitmq
+    #install_rabbitmq
     install_minio
     install_supervisor
     install_mail
