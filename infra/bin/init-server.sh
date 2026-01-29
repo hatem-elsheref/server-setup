@@ -632,3 +632,15 @@ main() {
 
 # Run main function
 main
+#6tQMdhY+h+g2kiAEILtdnBkZc2nk0QGCGeLzIGAyOjo=
+
+#g2kiAEILtdnBkZc2nk0QGCGeLzIGAyOjo
+
+#
+# New MySQL root password: nesfFE7PPvPt+MQ2l5Q/2DQhuNyHs0w5GEc2MXVBvmc=
+ftp ftp_ceramic_root_100200300
+
+sudo chown -R ftpuser:ftpuser /var/www/projects/myproject
+/var/www/projects/ceramic
+
+hatem-ceramic
